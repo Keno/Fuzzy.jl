@@ -1,4 +1,10 @@
-module Fuzzy
+baremodule Fuzzy
+
+# We use the name `eval`, which is ordinarily reserved for the implicitly
+# added eval/include functions. To avoid having julia add these names, we
+# use `baremodule` above and add back the Base imports here.
+using Base
+include(args...) = Base.include(Fuzzy, args...)
 
 export TriangularMF, GaussianMF, BellMF, TrapezoidalMF, SigmoidMF
 
